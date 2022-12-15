@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    justify-content: center;
+   
+  
+}
+
+.add{
+    margin-left: 50px;
+}
+.find{
+    margin-left: -50px;
+}
+.nayavni{
+    margin-left: 50px;
+}
+.foundUsers{
+    margin-left: 50px;
+}
