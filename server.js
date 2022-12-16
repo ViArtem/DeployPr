@@ -6,7 +6,7 @@ const {conn} = require(path.resolve('connnect.js'))
 
 
 
-const Person = require(path.resolve('Models', 'users.js'))
+const Person = require(path.resolve('models', 'users.js'))
 
 
 app.set("view engine", "hbs");
@@ -20,7 +20,7 @@ let findUser
 
 app.get('/', async(req, res)=>{
     const usersN = await Person.find({}).lean()
-    console.log(usersN);
+   
     res.render(path.resolve('view','index.hbs'), {usersN, fin, findUser }) //number: num, name: nam
 })
 
