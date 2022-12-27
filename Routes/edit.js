@@ -20,8 +20,10 @@ routerer.get('/update', async (req, res)=>{
 
 })
 
-routerer.get('/updateCancel', async (req, res)=>{
-    res.redirect('/')
+routerer.post('/updateCancel', async (req, res)=>{
+    update = true
+    res.redirect(307,'/findDel')
+   // res.redirect('/')
 
 })
 
