@@ -12,35 +12,25 @@
         <div class="find">
             <h1>Find number</h1>
             <form action="/find" method="post">
-                <label for="">Enter a first name</label>
+                <label for="">Enter a full name</label>
                 <br/>
                 <input type="text" name="findUserFN" required>
                 <br/>
                 <br/>
-                <label for="">Enter a last name</label>
-                <br/>
-                <input type="text" name="findUserLN" required>
-                <br/>
-                <br/>
-                <button type="submit" class="button">Save</button>
+                <button type="submit" class="button">Find</button>
             </form>
         </div>
         <div class="add">
             <h1>Add number</h1>
             <form action="/add" method="post" >
-                <label for="">Enter a first name</label>
+                <label for="">Enter a full name</label>
                 <br/>
                 <input type="text" name="userFN" required>
                 <br/>
                 <br/>
-                <label for="">Enter a last name</label>
-                <br/>
-                <input type="text" name="userLN" required>
-                <br/>
-                <br/>
                 <label for="">Enter a number</label>
                 <br/>
-                <input type="text" name="userNum" required>
+                <input type="number" name="userNum" required>
                 <br/>
                 <br/>
                 <button type="submit" class="button">Save</button>
@@ -57,17 +47,23 @@
             {{/if}}
         </div>
         <div class="foundUsers">
-            {{#if fin}}
             <h1>Found Users</h1>
-             {{#each findUser}}
-            <span>{{name.firstname}}  {{name.lastname}} </span> :  {{number}}
-             {{/each}}
-             {{else}}
-             <h1>Found Users</h1>
+
+             {{#if fin}}
+             <div class="user">
+             <span>{{ff.name.firstname}} {{ff.name.lastname}} : {{ff.number}}</span> 
+             <br/>
+             <br/>
+             <form action="/delete" method="post"> <button type="submit" class="button">Delete</button></form>
+             <br/>
+             <form action="/update" method="get"><button type="submit" class="button">Update</button></form>
+             </div>
+             {{else }}
              <p>No user found</p>
              {{/if}}
+
         </div>
     </div>
-
+    
 </body>
 </html>
