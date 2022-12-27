@@ -13,7 +13,6 @@ routerdel.post('/delete', async (req, res)=>{
     
 
 
-        //tr = true
      
 })
 export{routerdel, tr}
