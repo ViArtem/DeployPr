@@ -1,18 +1,28 @@
 import {Router} from 'express'
 const routerdel = Router()
-import { dell } from './dataBaseFunc/deleteFunc.js'
-import { fin } from './find.js'
+import { delleteUserFromDatabaseFunction } from './dataBaseFunc/deleteFunc.js'
+import { findUserBoolean } from './find.js'
 
 
-let tr = true
-routerdel.post('/delete', async (req, res)=>{
-    let a = await dell()
-        tr = false
-        //res.redirect("/")
-        res.redirect(307,"/findDel")
+let booleanDeleteUser = true
+//Handles a request to delete a user
+routerdel.delete('/delete', async (req, res)=>{
+try {
+    let deleteUserFunc = await delleteUserFromDatabaseFunction()
+    booleanDeleteUser = false
+    res.sendStatus(200)
+    console.log(deleteUserFunc);
+    //res.redirect("/findDel") 
+    
+} catch (error) {
+    console.log(error);
+    res.sendStatus(error.status)
+}
+
+
     
 
 
      
 })
-export{routerdel, tr}
+export{routerdel, booleanDeleteUser}

@@ -1,18 +1,27 @@
 import Person  from  '../../models/users.js'
-import {routerss, addF, addL, numm} from '../add.js'
-async function add() {
+import {routerss, addFirstName, addLastName, addNumber} from '../add.js'
 
-    const newUser = await new Person({name: {
-        firstname:addF ,
-        lastname: addL
-    },
-    number:  numm
-    }) 
-    await newUser.save()
+//Аdds a user to the database
+async function addUserToDatabase() {
+
+    try {
+        const newUser = await new Person({name: {
+            firstName: addFirstName,
+            lastName: addLastName
+        },
+        number: addNumber
+        }) 
+        await newUser.save()
+        return newUser
+        
+    } catch (e) {
+        console.log(e);
+        
+    }
     
 }
 
 
-export{add}
+export{addUserToDatabase}
 
 

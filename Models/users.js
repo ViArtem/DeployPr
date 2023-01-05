@@ -1,10 +1,10 @@
 import {Schema, model} from 'mongoose'
 const shem = new Schema({
     name: {
-        firstname: String,
-        lastname: String
+        firstName: String,
+        lastName: String
     },
-    number: Number
+    number: String
 
 })
 

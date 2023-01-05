@@ -14,7 +14,7 @@
             <form action="/find" method="post">
                 <label for="">Enter a full name</label>
                 <br/>
-                <input type="text" name="findUserFN" required>
+                <input type="text" name="findUserFullName" required>
                 <br/>
                 <br/>
                 <button type="submit" class="button">Find</button>
@@ -25,23 +25,23 @@
             <form action="/add" method="post" >
                 <label for="">Enter a full name</label>
                 <br/>
-                <input type="text" name="userFN" required>
+                <input type="text" name="userFullName" class="userFullName" required>
                 <br/>
                 <br/>
                 <label for="">Enter a number</label>
                 <br/>
-                <input type="number" name="userNum" required>
+                <input type="tel" name="userNum" class="userNamber" maxlength="13" minlength="12" required>
                 <br/>
                 <br/>
                 <button type="submit" class="button">Save</button>
             </form>
         </div>
         <div class="nayavni">
-             {{#if usersN.length}}
+             {{#if arrayUsersNames.length}}
                 <h1>Available phone numbers</h1>
-                {{#each usersN}}
+                {{#each arrayUsersNames}}
                      <li class="todo">
-                        {{name.firstname}}  {{name.lastname}} 
+                        {{name.firstName}}  {{name.lastName}} 
                      </li>
                  {{/each}}
             {{/if}}
@@ -49,14 +49,15 @@
         <div class="foundUsers">
             <h1>Found Users</h1>
 
-             {{#if fin}}
+             {{#if findUserBoolean}}
              <div class="user">
-             <span>{{ff.name.firstname}} {{ff.name.lastname}} : {{ff.number}}</span> 
+             <span>{{foundUser.name.firstName}} {{foundUser.name.lastName}} : {{foundUser.number}}</span> 
              <br/>
              <br/>
-             <form action="/delete" method="post"> <button type="submit" class="button">Delete</button></form>
+             {{!-- <form action="/delete" method="delete">  <button type="submit" class="buttonDel">Delete</button></form> --}}
+             <div class="buttonDel">Delete</div>
              <br/>
-             <form action="/update" method="get"><button type="submit" class="button">Update</button></form>
+             <form action="/updateRenderPage" method="get"><button type="submit" class="button">Update</button></form>
              </div>
              {{else }}
              <p>No user found</p>
@@ -64,6 +65,7 @@
 
         </div>
     </div>
+    <script src="deleteUser.js"></script>
     
 </body>
 </html>

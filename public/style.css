@@ -17,3 +17,13 @@
 .foundUsers{
     margin-left: 50px;
 }
+.buttonDel{
+    width: 100px;
+    height: 30px;
+    padding-top: 10px;
+    text-align: center;
+    border: 1px solid;
+}
+.buttonDel:hover{
+    background-color: rgb(255, 0, 0);
+}

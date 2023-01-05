@@ -1,12 +1,22 @@
 import Person  from  '../../models/users.js'
-import { idt, newN, newL, newNum } from '../edit.js'
+import { userIdWeAreUpdating, newUserFirstName, newUserLastName,  newUserNum } from '../edit.js'
 
-async function edit(){
-  let nn = await Person.updateOne({_id: idt}, {$set:{name: {
-    firstname:newN ,
-    lastname: newL
-}}, number: newNum})
+//Сhanges the user in the database
+async function editUser(){
+  try {
+    let newUpdatedUser = await Person.updateOne({_id: userIdWeAreUpdating}, {$set:{name: {
+      firstName:newUserFirstName ,
+      lastName: newUserLastName
+  }}, number: newUserNum})
+
+  return newUpdatedUser
+    
+  } catch (e) {
+    console.log(e);
+    
+  }
+  
 
 }
 
-export{edit}
+export{editUser}

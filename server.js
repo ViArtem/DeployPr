@@ -8,47 +8,46 @@ const app = express()
 const PORT = process.env.PORT || 3000
 
 app.set("view engine", "hbs");
-app.use(express.static(path.resolve( "public")))
+// app.use(express.static(path.resolve( "public")))
 app.use(express.urlencoded({ extended: true}))
 
-import {fin, ff} from './Routes/find.js'
 
-//import {finds} from './Routes/dataBaseFunc/findFunc.js'
+
+let allMiddleware = [express.urlencoded({ extended: true}), routerdel, routerss, router, routerer,express.static(path.resolve( "public"))]
+
+for (let i = 0; i < allMiddleware.length; i++) { 
+
+    app.use(allMiddleware[i])
+    
+}
+
+
 import Person  from  './models/users.js'
 
 //Delete
-import {routerdel, tr} from './Routes/delete.js'
-app.use(routerdel)
+import {routerdel} from './Routes/delete.js'  //booleanDeleteUser
 
-
-// Render home page
-app.get('/', async(req, res)=>{
-    const usersN = await Person.find({}).lean()
-    let delUser = tr
-    if(delUser == false){
-        delUser = true
-    }
-    res.render(path.resolve('view','index.hbs'), {usersN, fin,  ff, tr, delUser}) //number: num, name: nam findUser
-})
-
-//редактувати видаляти 
-//окремі роути
-//окремо додати роботу з базою і додати модулем в роут
-//все через es модулі
-//
 
 //Adding users  
 import {routerss} from './Routes/add.js'
-app.use(routerss) 
+ 
 
 //Find users
-import {router} from './Routes/find.js'
-app.use(router) 
+import {router, findUserBoolean, foundUser } from './Routes/find.js'
+
 
 
 //Update
 import { routerer } from './Routes/edit.js';
-app.use(routerer) 
+
+ 
+
+// Render home page
+app.get('/', async(req, res)=>{
+    const arrayUsersNames = await Person.find({}).lean()
+
+    res.render(path.resolve('view','index.hbs'), {arrayUsersNames, findUserBoolean, foundUser }) 
+})
 
 
 app.listen(PORT, ()=>{
