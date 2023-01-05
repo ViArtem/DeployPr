@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true}))
 
 
 
-let allMiddleware = [express.urlencoded({ extended: true}), routerdel, routerss, router, routerer,express.static(path.resolve( "public"))]
+let allMiddleware = [routerdel, routerss, router, routerer,express.static(path.resolve( "public"))]
 
 for (let i = 0; i < allMiddleware.length; i++) { 
 
