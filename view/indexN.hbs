@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Test</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="conteudo">
+        <div class="carrousel">
+            <article class="card">
+                <div class="find">
+                    <h1>Find number</h1>
+                    <br/>
+                    <form action="/find" method="post">
+                        <label for="">Enter a full name</label>
+                        <br/>
+                        <br/>
+                        <input type="text" name="findUserFullName" class="inputText" required>
+                        <br/>
+                        <br/>
+                        <button type="submit" class="button buttonInput">Find</button>
+                    </form>
+                </div>
+                
+   
+            </article>
+            <article class="card">
+                <div class="nayavni">
+                    {{#if arrayUsersNames.length}}
+                        <h1>Available phone numbers</h1>
+                        <br/>
+                        {{#each arrayUsersNames}}
+                            <li class="todo">
+                                {{name.firstName}}  {{name.lastName}} 
+                            </li>
+                        {{/each}}
+                    {{/if}}
+                </div>
+            </article>
+            <article class="card">
+                <div class="add">
+                    <h1>Add number</h1><br/>
+                    <form action="/add" method="post" >
+                        <label for="">Enter a full name</label>
+                        <br/>
+                        <input type="text" name=" userFullName" class="inputText userFullName" required>
+                        <br/>
+                        <br/>
+                        <label for="">Enter a number</label>
+                        <br/>
+                        <input type="tel" name="userNum" class="inputText userNamber" maxlength="13" minlength="12"  placeholder="+380687659752" required>
+                        <br/>
+                        <br/>
+                        <button type="submit" class="button buttonInput">Save</button>
+                    </form>
+                </div>
+            </article>
+            <article class="card">
+                <div class="foundUsers">
+                    <h1>Found Users</h1>
+
+                    {{#if findUserBoolean}}
+                        <div class="user">
+                            <span>{{foundUser.name.firstName}} {{foundUser.name.lastName}} : {{foundUser.number}}</span> 
+                            <br/>
+                            <br/>
+                            {{!-- <form action="/delete" method="delete">  <button type="submit" class="buttonDel">Delete</button></form> --}}
+                            <div class="buttonInput buttonDel">Delete</div>
+                            <br/>
+                            <form action="/updateRenderPage" method="get"><button type="submit" class="button buttonInput">Update</button></form>
+                        </div>
+                    {{else }}
+                        <p>No user found</p>
+                    {{/if}}
+
+                </div>
+
+
+                
+            </article>
+            
+        </div>
+        <p>Swipe on the touchpad or press the right arrow</p>
+    </div>
+    <script src="deleteUser.js"></script>
+</body>
+
+</html>

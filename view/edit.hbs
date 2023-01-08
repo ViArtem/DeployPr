@@ -4,14 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="style.css">
     <title>EditUser</title>
 </head>
 <body>
+
+    <div class="conteudo">
+        <div class="carrousel">
+            <article class="card">
     <div class="add">
         <form action="/update" method="post" >
             <label for="">Enter a full name</label>
             <br/>
-            <input type="text" name="newUserFN" class="inpName" required>
+            <input type="text" name="newUserFN" class="inpName " required>
             <br/>
             <br/>
             <label for="">Enter a number</label>
@@ -19,12 +24,16 @@
             <input type="tel" name="NewUserNum" maxlength="13" minlength="12" class="inpNum" required>
             <br/>
             <br/>
-            <button type="submit" class="button">Save</button>
+            <button type="submit" class="button buttonInput">Save</button>
         </form>
             <br/>
  
-        <form action="/updateCancel" method="post" ><button type="submit" class="button">Cancel</button></form>
+        <form action="/updateCancel" method="post" ><button type="submit" class="button buttonInput">Cancel</button></form>
     </div>
+   
+            </article>
+            </div>
+
     <script src="data.js"></script>
 </body>
 </html>

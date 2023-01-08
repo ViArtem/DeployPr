@@ -1,11 +1,85 @@
-.container{
-    display: flex;
-    justify-content: center;
-   
-  
+* {
+    font-family: "Verdana", sans-serif;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    letter-spacing: 0px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    margin: 0;
+    color: #fff;
 }
 
-.add{
+body {
+    margin: 2rem;
+    background-color: #212123;
+}
+
+.conteudo {
+    width: 1020px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.carrousel {
+    display: grid;
+    grid-auto-flow: column;
+    scroll-behavior: auto;
+    gap: 1.2rem;
+    overflow-y: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.carrousel::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    scroll-snap-align: start;
+    border-radius: 30px;
+    min-height: 400px;
+    min-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.card:nth-child(1) {
+    background: linear-gradient(-229deg, #FBD52D, #EF3A7B);
+}
+
+.card:nth-child(2) {
+    background: linear-gradient(-229deg, #FF70AF, #5FA8F5);
+}
+
+.card:nth-child(3) {
+    background: linear-gradient(-229deg, #0cebeb, #29ffc6);
+}
+
+.card:nth-child(4) {
+    background: linear-gradient(-229deg, #88F7F9, #048FFF);
+}
+
+.card:nth-child(5) {
+    background: linear-gradient(-229deg, #0093E9, #80D0C7);
+}
+
+.card:nth-child(6) {
+    background: linear-gradient(-229deg, #cf91ff, #5782F5);
+}
+
+.card:nth-child(7) {
+    background: linear-gradient(-229deg, #642B73, #C6426E);
+}
+
+
+
+
+
+/* .add{
     margin-left: 50px;
 }
 .find{
@@ -16,14 +90,36 @@
 }
 .foundUsers{
     margin-left: 50px;
-}
-.buttonDel{
+} */
+
+.buttonInput{
     width: 100px;
     height: 30px;
-    padding-top: 10px;
+    background-color: transparent;
+    border: 1px solid;
+    -moz-transition: all 3s ease-out;
+-o-transition: all 3s ease-out;
+-webkit-transition: all 3s ease-out;
+}
+
+.buttonInput:hover{
+
+    -webkit-transform: scale(1.1);
+-moz-transform: scale(1.1);
+-o-transform: scale(1.1);
+}
+
+input{
+    background-color: transparent; 
+}
+.buttonDel{
+
+    padding-top: 5px;
     text-align: center;
     border: 1px solid;
+   
 }
 .buttonDel:hover{
     background-color: rgb(255, 0, 0);
+    padding-top: 3px;
 }
