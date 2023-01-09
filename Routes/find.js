@@ -14,6 +14,7 @@ let userLastname
 //Processes a request to find a user
 router.post('/find', async (req, res)=>{
     try {
+        
         userName = splitFullName(req.body.findUserFullName)[0]
         userLastname = splitFullName(req.body.findUserFullName)[1]
         // Тhe found user object

@@ -4,6 +4,8 @@ import {addUserToDatabase} from './dataBaseFunc/addUsersFunc.js'
 //Аrray with first and last name
 import { splitFullName } from '../otherFunc/string.js'
 
+
+
 import {Router} from 'express'
 const routerss = Router()
 
@@ -17,6 +19,7 @@ routerss.post('/add', async (req, res)=>{
     
     try {
         
+        
         //Phone number validation
         const regularExpretionNumber = /^(?:\+[1-9]{1,3})?(?:[0-9]{3}[ .-]?[0-9]{3}[ .-]?[0-9]{2}[ .-]?[0-9]{2}|044[ .-]?[0-9]{3}[ .-]?[0-9]{2}[ .-]?[0-9]{2}|044[0-9]{7})$/ ///^[\+][1-9]{1,4}\d{10,11}/
         let numberUser = req.body.userNum
@@ -25,13 +28,18 @@ routerss.post('/add', async (req, res)=>{
         
         //Name validation 
         const regularExpretionName = /^[a-z]+ [a-z]+$/gi
-        let userFullNameForVerification = splitFullName(req.body.userFullName).join(' ').match(regularExpretionName)
+        let fullNameBody = req.body.userFullName
+        console.log('full ' + fullNameBody);
+        let userFullNameForVerification = splitFullName(fullNameBody).join(' ').match(regularExpretionName)
+        
          
         //Сhecking if the data is valid, if so the user is added
         if (validateUserNumber != null && userFullNameForVerification != null){ 
-            addNumber = numberUser
+            
+            //console.log(req.body.userFullName);
             addFirstName = splitFullName(req.body.userFullName)[0]
-            addLastName = splitFullName(req.body.userFullName)[1]
+            addLastName =  splitFullName(req.body.userFullName)[1]
+            addNumber = numberUser
             if (addLastName == undefined) {
                 res.redirect('/')
             }else{
@@ -47,6 +55,7 @@ routerss.post('/add', async (req, res)=>{
   
 
     } catch (error) {
+        console.log(req.body.userFullName);
         console.log('Wrong number', error);
         res.redirect('/')
     }

@@ -7,21 +7,12 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+
 app.set("view engine", "hbs");
-// app.use(express.static(path.resolve( "public")))
-app.use(express.urlencoded({ extended: true }));
 
-let allMiddleware = [
-  routerdel,
-  routerss,
-  router,
-  routerer,
-  express.static(path.resolve("public")),
-];
+app.use(express.urlencoded({ extended: false }));
 
-for (let i = 0; i < allMiddleware.length; i++) {
-  app.use(allMiddleware[i]);
-}
+
 
 import Person from "./models/users.js";
 
@@ -36,6 +27,22 @@ import { router, findUserBoolean, foundUser } from "./Routes/find.js";
 
 //Update
 import { routerer } from "./Routes/edit.js";
+
+
+let allMiddleware = [
+  routerdel,
+  routerss,
+  router,
+  routerer,
+  express.static(path.resolve("public")),
+ 
+  //express.urlencoded({ extended: true })
+];
+
+for (let i = 0; i < allMiddleware.length; i++) {
+  app.use(allMiddleware[i]);
+}
+
 
 // Render home page
 app.get("/", async (req, res) => {
